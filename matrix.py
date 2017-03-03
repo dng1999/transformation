@@ -1,20 +1,31 @@
 import math
 
 def make_translate( x, y, z ):
-    pass
-
+    m = ident(new_matrix())
+    m[0][3] = x
+    m[1][3] = y
+    m[2][3] = z
+    return m
+    
 def make_scale( x, y, z ):
-    pass
+    m = ident(new_matrix())
+    m[0][0] = x
+    m[1][1] = y
+    m[2][2] = z
+    return m
 
 def make_rotX( theta ):    
-    pass
-
+    m = ident(new_matrix())
+    return m
+    
 def make_rotY( theta ):
-    pass
+    m = ident(new_matrix())
+    return m
 
 def make_rotZ( theta ):
-    pass
-
+    m = ident(new_matrix())
+    return m
+    
 def print_matrix( matrix ):
     s = ''
     for r in range( len( matrix[0] ) ):

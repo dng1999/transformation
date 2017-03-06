@@ -1,7 +1,8 @@
 import math
 
 def make_translate( x, y, z ):
-    m = ident(new_matrix())
+    m = new_matrix()
+    ident(m)
     m[0][3] = x
     m[1][3] = y
     m[2][3] = z
@@ -9,7 +10,8 @@ def make_translate( x, y, z ):
     return m
     
 def make_scale( x, y, z ):
-    m = ident(new_matrix())
+    m = new_matrix()
+    ident(m)
     m[0][0] = x
     m[1][1] = y
     m[2][2] = z
@@ -17,7 +19,8 @@ def make_scale( x, y, z ):
     return m
 
 def make_rotX( theta ):    
-    m = ident(new_matrix())
+    m = new_matrix()
+    ident(m)
     rad = math.radians( theta )
     m[1][1] = math.cos( rad ) 
     m[1][2] = -1 * math.sin( rad )
@@ -27,7 +30,8 @@ def make_rotX( theta ):
     return m;
     
 def make_rotY( theta ):
-    m = ident(new_matrix())
+    m = new_matrix()
+    ident(m)
     rad = math.radians( theta )
     m[0][0] = math.cos( rad ) 
     m[3][0] = -1 * math.sin( rad )
@@ -36,7 +40,8 @@ def make_rotY( theta ):
     return m;
 
 def make_rotZ( theta ):
-    m = ident(new_matrix())
+    m = new_matrix()
+    ident(m)
     rad = math.radians( theta )
     m[0][0] = math.cos( rad ) 
     m[0][1] = -1 * math.sin( rad )
@@ -68,7 +73,6 @@ def scalar_mult( matrix, s ):
             
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-
     point = 0
     for row in m2:
         #get a copy of the next point
@@ -80,7 +84,6 @@ def matrix_mult( m1, m2 ):
                             m1[2][r] * tmp[2] +
                             m1[3][r] * tmp[3])
         point+= 1
-
 
 def new_matrix(rows = 4, cols = 4):
     m = []

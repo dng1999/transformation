@@ -1,21 +1,51 @@
 line
-0 0 0 100 100 0
+0 0 0 100 0 0
+line
+100 0 0 100 100 0
+line
+100 100 0 0 100 0
+line
+0 100 0 0 0 0
+line
+0 0 100 100 0 100
+line
+100 0 100 100 100 100
+line
+100 100 100 0 100 100
+line
+0 100 100 0 0 100
+line
+0 0 0 0 0 100
+line
+0 100 0 0 100 100
+line
+100 100 0 100 100 100
+line
+100 0 0 100 0 100
+display
 ident
 scale
-2 3 2
-translate
-5 10 4
+2 2 2
+apply
+display
+ident
+move
+100 100 0
+apply
+display
+ident
 rotate
-x 30
+z 20
 rotate
-y 30
+x 20
 rotate
-x 30
-yrotate
-60
-zrotate
-60
+y 20
+apply
+display
+ident
+rotate
+y 20
 apply
 display
 save
-quit
+pic.png

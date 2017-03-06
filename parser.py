@@ -14,19 +14,13 @@ The file follows the following format:
 	 scale: create a scale matrix, 
 	    then multiply the transform matrix by the scale matrix - 
 	    takes 3 arguments (sx, sy, sz)
-	 translate: create a translation matrix, 
+	 move: create a translation matrix, 
 	    then multiply the transform matrix by the translation matrix - 
 	    takes 3 arguments (tx, ty, tz)
 	 rotate: create a rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
 	    takes 2 arguments (axis, theta) axis should be x, y or z
-	 yrotate: create an y-axis rotation matrix,
-	    then multiply the transform matrix by the rotation matrix -
-	    takes 1 argument (theta)
-	 zrotate: create an z-axis rotation matrix,
-	    then multiply the transform matrix by the rotation matrix -
-	    takes 1 argument (theta)
-	 apply: apply the current transformation matrix to the 
+         apply: apply the current transformation matrix to the 
 	    edge matrix
 	 display: draw the lines of the edge matrix to the screen
 	    display the screen
@@ -55,7 +49,13 @@ def parse_file( fname, points, transform, screen, color ):
             if len(args)< 3: 
                 print("not enough args")
             else:
-                matrix_mult(make_scale(int(args[0]), int(args[1]), int(args[2])),transform)
+                matrix_mult(make_scale(int(args[0]),int(args[1]),int(args[2])),transform)
+        elif cmd == "move":
+            args = file.readline().strip().split(" ")
+            if len(args) < 3:
+                print("not enough args")
+            else:
+                matrix_mult(make_translate(int(args[0]), int(args[1]), int(args[2])),transform)
         elif cmd == "rotate":
             args = file.readline().strip().split(" ")
             if len(args) < 2:
@@ -67,18 +67,6 @@ def parse_file( fname, points, transform, screen, color ):
                     matrix_mult(make_rotY(int(args[1])), transform)
                 else:
                     matrix_mult(make_rotZ(int(args[1])), transform)
-        elif cmd == "yrotate":
-            args = file.readline().strip().split(" ")
-            if len(args) < 1:
-                print("not enough args")
-            else:
-                matrix_mult(make_rotY(int(args[0])), transform)
-        elif cmd == "zrotate":
-            args = file.readline().strip().split(" ")
-            if len(args) < 1:
-                print("not enough args")
-            else:
-                matrix_mult(make_rotZ(int(args[0])), transform)
         elif cmd == "apply":
             matrix_mult(transform, points)
         elif cmd == "display":
@@ -94,3 +82,4 @@ def parse_file( fname, points, transform, screen, color ):
         else:
             print("no command")
         line = file.readline().strip()
+        

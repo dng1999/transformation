@@ -31,8 +31,8 @@ def make_rotY( theta ):
     ident(m)
     rad = math.radians( theta )
     m[0][0] = math.cos( rad ) 
-    m[3][0] = -1 * math.sin( rad )
     m[0][3] = math.sin( rad )
+    m[3][0] = -1 * math.sin( rad )
     m[3][3] = math.cos( rad )
     return m;
 
@@ -44,7 +44,6 @@ def make_rotZ( theta ):
     m[0][1] = -1 * math.sin( rad )
     m[1][0] = math.sin( rad )
     m[1][1] = math.cos( rad )
-    m[3][3] = 1
     return m
     
 def print_matrix( matrix ):

@@ -1,6 +1,7 @@
 from display import *
 from matrix import *
 from draw import *
+import time
 
 """
 Goes through the file named filename and performs all of the actions listed in that file.
@@ -49,29 +50,31 @@ def parse_file( fname, points, transform, screen, color ):
             if len(args)< 3: 
                 print("not enough args")
             else:
-                matrix_mult(make_scale(int(args[0]),int(args[1]),int(args[2])),transform)
+                transform = make_scale(int(args[0]),int(args[1]),int(args[2]))
         elif cmd == "move":
             args = file.readline().strip().split(" ")
             if len(args) < 3:
                 print("not enough args")
             else:
-                matrix_mult(make_translate(int(args[0]), int(args[1]), int(args[2])),transform)
+                transform = make_translate(int(args[0]), int(args[1]), int(args[2]))
         elif cmd == "rotate":
             args = file.readline().strip().split(" ")
             if len(args) < 2:
                 print("not enough args")
             else:
                 if (args[0] == 'x'):
-                    matrix_mult(make_rotX(int(args[1])), transform)
+                    transform = make_rotX(int(args[1]))
                 elif (args[0] == 'y'):
-                    matrix_mult(make_rotY(int(args[1])), transform)
+                    transform = make_rotY(int(args[1]))
                 else:
-                    matrix_mult(make_rotZ(int(args[1])), transform)
+                    transform = make_rotZ(int(args[1]))
         elif cmd == "apply":
             matrix_mult(transform, points)
         elif cmd == "display":
+            clear_screen(screen)
             draw_lines(points, screen, color)
             display(screen)
+            time.sleep(0.5)
         elif cmd == "save":
             args = file.readline().strip().split(" ")
             if len(args) < 1:

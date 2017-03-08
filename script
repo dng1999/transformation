@@ -22,17 +22,23 @@ line
 100 100 0 100 100 100
 line
 100 0 0 100 0 100
-display
+ident
+scale
+2 2 2
+apply
+ident
+move
+100 100 0
+apply
 ident
 rotate
-z 20
-rotate
-x 20
-rotate
-y 20
+z 10
 apply
 display
-ident
+rotate
+x 30
+apply
+display
 rotate
 y 20
 apply

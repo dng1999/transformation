@@ -66,8 +66,10 @@ def parse_file( fname, points, transform, screen, color ):
                     transform = make_rotX(int(args[1]))
                 elif (args[0] == 'y'):
                     transform = make_rotY(int(args[1]))
-                else:
+                elif (args[0] == 'z'):
                     transform = make_rotZ(int(args[1]))
+                else:
+                    print("axis of rotation not specified")
         elif cmd == "apply":
             matrix_mult(transform, points)
         elif cmd == "display":
